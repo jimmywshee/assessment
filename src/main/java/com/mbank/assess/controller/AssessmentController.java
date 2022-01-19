@@ -41,6 +41,13 @@ public class AssessmentController {
 	@Autowired
 	private IBoredApiRestService boredApiRestService;
 
+	/**
+	 * Retrieve Test Users with HTTP GET method
+	 * 
+	 * @param page - start with 0..1..2
+	 * @return
+	 * @throws URISyntaxException
+	 */
 	@GetMapping(ApiRequestMapping.Public.LIST_ASSESSMENT_USER_URI)
 	public ResponseEntity<List<UserBO>> getTestUsers(@RequestParam Integer page) throws URISyntaxException {
 		final String methodName = "getTestUsers";
@@ -55,6 +62,13 @@ public class AssessmentController {
 		return ResponseEntity.ok(userBOs);
 	}
 
+	/**
+	 * Perform action of user insertion based on input from user
+	 * 
+	 * @param userBO
+	 * @return
+	 * @throws URISyntaxException
+	 */
 	@PostMapping(ApiRequestMapping.Public.INSERT_ASSESSMENT_USER_URI)
 	public ResponseEntity<UserBO> insertTestUsers(@Valid @RequestBody UserBO userBO) throws URISyntaxException {
 		final String methodName = "insertTestUsers";
@@ -74,6 +88,14 @@ public class AssessmentController {
 		return ResponseEntity.ok(result);
 	}
 
+	/**
+	 * Perform action of update based on input from user
+	 * 
+	 * @param id
+	 * @param userBO
+	 * @return
+	 * @throws URISyntaxException
+	 */
 	@PatchMapping(ApiRequestMapping.Public.UPDATE_ASSESSMENT_USER_URI)
 	public ResponseEntity<UserBO> updateTestUsers(@Valid @PathVariable(value = "id") @NonNull String id,
 			@Valid @RequestBody UserBO userBO) throws URISyntaxException {
@@ -93,6 +115,12 @@ public class AssessmentController {
 		return ResponseEntity.ok(result);
 	}
 
+	/**
+	 * API to trigger Rest API call to www.boredapi.com and return response given
+	 * 
+	 * @return
+	 * @throws URISyntaxException
+	 */
 	@GetMapping(ApiRequestMapping.Public.LIST_ASSESSMENT_EXT_PARTY_URI)
 	public ResponseEntity<BoredActivityBO> getExternalPartyActivity() throws URISyntaxException {
 		final String methodName = "getExternalPartyActivity";
